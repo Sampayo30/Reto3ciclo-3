@@ -14,11 +14,12 @@ public class Category implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private Integer name;
+    private String description;
 
 
     @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "category")
     @JsonIgnoreProperties("category")
-    private List<Producto> producto;
+    private List<Library> libs;
 
     public Integer getId() {
         return id;
@@ -36,11 +37,19 @@ public class Category implements Serializable {
         this.name = name;
     }
 
-    public List<Producto> getProducto() {
-        return producto;
+    public String getDescription() {
+        return description;
     }
 
-    public void setProducto(List<Producto> producto) {
-        this.producto = producto;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public List<Library> getLibs() {
+        return libs;
+    }
+
+    public void setLibs(List<Library> libs) {
+        this.libs = libs;
     }
 }
